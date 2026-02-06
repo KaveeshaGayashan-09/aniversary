@@ -196,6 +196,68 @@ p {
   .memory-text { padding: 25px 0 0; }
   
   .heart { font-size: 18px; }
+
+  .hero-section {
+    /* Change fixed height to auto so it grows with the content */
+    height: auto; 
+    min-height: 100vh; 
+    padding-top: 100px; /* Push content down from the very top */
+    padding-bottom: 60px; /* Add space at bottom */
+    width: 100%;
+    /* Ensure content doesn't overflow horizontally */
+    box-sizing: border-box; 
+  }
+
+  /* 2. Resize the Big Title */
+  .main-title {
+    font-size: 3rem; /* Reduced from 5rem */
+    line-height: 1.2;
+    padding: 0 15px; /* Prevent text touching edges */
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  /* 3. Fix the Polaroid Container */
+  .hero-snapshots-container {
+    gap: 15px; /* Reduce gap between photos */
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+
+  /* 4. Shrink the Polaroid Cards */
+  /* This size (approx 150px) allows 2 cards to fit side-by-side on most phones */
+  .snapshot-card {
+    width: 44%; /* Flexible width instead of fixed 220px */
+    max-width: 160px; /* Don't get too big */
+    padding: 8px 8px 40px 8px; /* Smaller white border */
+  }
+
+  /* Adjust the image height inside the card */
+  .snapshot-img-wrapper {
+    height: 140px;
+    
+  }
+
+  /* Adjust the caption text */
+  .snapshot-caption {
+    font-size: 1rem;
+    bottom: 10px;
+  }
+
+  /* 5. Tweak Animations for Mobile Performance */
+  /* Reduce rotation on mobile to keep layout cleaner */
+  .snapshot-card:nth-child(odd) { transform: rotate(-2deg); }
+  .snapshot-card:nth-child(even) { transform: rotate(2deg); }
+  
+  /* Disable hover effects on mobile (since you can't hover) */
+  .snapshot-card:hover {
+    transform: none !important; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Reset shadow */
+  }
 }
 
 
