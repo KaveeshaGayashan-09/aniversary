@@ -14,7 +14,7 @@ const memories = [
   },
   {
     id: 2,
-    date: "Month 6",
+    date: "Month 2",
     title: "Our First Trip",
     description: "Our first year wasn't just about dates or gifts; it was about growing together. Through every up and down, holding your hand made me feel invincible. You are my strength.",
     image: img1
