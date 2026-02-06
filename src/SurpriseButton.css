@@ -1,0 +1,106 @@
+/* Container to center everything */
+.surprise-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  perspective: 1000px;
+}
+
+/* --- The Button Style --- */
+.magic-button {
+  background: linear-gradient(45deg, #80006a, #e00196);
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  color: rgb(255, 249, 249);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(255, 154, 158, 0.4);
+  transition: transform 0.2s;
+  animation: pulse 2s infinite;
+}
+
+.magic-button:hover {
+  transform: scale(1.2);
+  box-shadow: 0 15px 25px rgba(255, 154, 158, 0.6);
+}
+
+.magic-button:active {
+  transform: scale(0.95);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 154, 158, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 154, 158, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 154, 158, 0); }
+}
+
+/* --- The Revealed Content Card --- */
+.hidden-content {
+  background: linear-gradient(45deg, #80006a, #e00196);
+  width: 300px;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border: 2px solid #fff0f0;
+  position: relative;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px dashed #eee;
+  padding-bottom: 10px;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: #dbcad0;
+  font-family: 'Dancing Script', cursive;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.hidden-content p {
+  color: #ffebeb;
+  line-height: 1.6;
+  font-family: 'Nunito', sans-serif;
+}
+
+.decor-emoji {
+  font-size: 3rem;
+  margin-top: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* --- The Appear Animation --- */
+.reveal-animation {
+  animation: popUpSpring 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+@keyframes popUpSpring {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

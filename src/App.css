@@ -1,0 +1,345 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  /* THE CHANGE: A continuous pink gradient for the whole page */
+  background: linear-gradient(180deg, #e21c22 0%, #d463bc 90%, #aa5687 100%);
+  
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+  color: #ebcbcb;
+  min-height: 100vh;
+}
+
+.App {
+  position: relative;
+  /* Ensures content sits above the background */
+  z-index: 1; 
+}
+
+/* Floating Hearts Background - Fixed to screen */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1; /* Puts hearts behind text but on top of gradient */
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  font-size: 24px;
+  color: rgb(255, 255, 255); /* Slightly transparent hearts */
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* No background here so the body gradient shows through */
+}
+
+.main-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 5rem;
+  color: #fafafa; /* White text looks better on pink background */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  margin: 0;
+  animation: popIn 1.2s ease-out;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #000000;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  font-size: 2.5rem;
+  animation: bounce 2s infinite;
+  color: #fff;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* Timeline */
+.timeline-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.memory-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  
+  /* White card to stand out against the pink background */
+  background: linear-gradient(90deg, #e6d8e5 0%, #b62f99 90%, #b1377e 100%);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.memory-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.memory-card.left { flex-direction: row; }
+.memory-card.right { flex-direction: row-reverse; text-align: right; }
+
+.memory-img-container {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.memory-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+.memory-card:hover  {
+  transform: scale(1.08);
+}
+
+.memory-text {
+  flex: 1.2; /* Text takes up slightly more space */
+  padding: 0 40px;
+  
+}
+
+.date-badge {
+  background: #df1c1c; /* Matches the background theme */
+  color: rgb(255, 255, 255);
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+h2 { 
+  margin: 15px 0 10px; 
+  color: #d6336c; /* Darker pink for headings */
+  font-size: 2rem;
+  font-family: 'Dancing Script', cursive;
+}
+
+p { 
+  color: #ffffff; 
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: rgb(247, 241, 241);
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-title { font-size: 3.5rem; }
+  
+  .memory-card.left, .memory-card.right {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .memory-text { padding: 25px 0 0; }
+  
+  .heart { font-size: 18px; }
+}
+
+
+/* Container to arrange the photos */
+.hero-snapshots-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* Space between photos */
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  perspective: 1000px; /* Adds depth for 3D effects */
+}
+
+/* The Polaroid Card */
+.snapshot-card {
+  position: relative;
+  width: 220px;
+  background-color: #fff;
+  /* Thick bottom padding for the polaroid text area */
+  padding: 12px 12px 50px 12px; 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  /* Initial State for Animation */
+  opacity: 0;
+  /* The name 'dealCards' matches the keyframes defined at the bottom */
+  animation-name: dealCards; 
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+/* Image Wrapper */
+.snapshot-img-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #eee;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* The Image Itself */
+.snapshot-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: sepia(15%); /* Slight vintage warm tone */
+}
+
+/* The Caption */
+.snapshot-caption {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Dancing Script', cursive; /* Make sure to import this font */
+  font-size: 1.3rem;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* --- VARIATIONS --- */
+/* Rotate even/odd cards differently for a natural "tossed on table" look */
+.snapshot-card:nth-child(odd) {
+  transform: rotate(-3deg);
+}
+
+.snapshot-card:nth-child(even) {
+  transform: rotate(2deg) translateY(5px);
+}
+
+/* --- HOVER EFFECTS --- */
+.snapshot-card:hover {
+  /* Straighten up, scale up, and float above others */
+  transform: scale(1.1) rotate(0deg) translateY(-15px) !important;
+  z-index: 100;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.snapshot-card:hover .snapshot-img-wrapper img {
+  transform: scale(1.1); /* Zoom photo slightly */
+  filter: sepia(0%); /* Restore full color */
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes dealCards {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    /* We don't set rotate here so it falls back to the nth-child rotations */
+  }
+}
+
+/* Adjust hero text margin */
+.hero-text-content {
+    margin-bottom: 20px;
+}
+
+/* Responsive adjustments for hero cards */
+@media (max-width: 600px) {
+    .hero-snapshots-container {
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .snapshot-img-wrapper {
+        width: 100px;
+        height: 130px;
+    }
+    .snapshot-caption {
+        font-size: 1rem;
+    }
+}
+
+/* Floating Pandas Background */
+.floating-pandas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1; 
+  overflow: hidden;
+}
+
+.panda-emoji {
+  position: absolute;
+  bottom: -50px;
+  font-size: 35px; /* Bigger pandas */
+  opacity: 0.5;    /* Slightly visible so they don't distract */
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+  50% { transform: translateY(-50vh) rotate(20deg); opacity: 0.5; }
+  100% { transform: translateY(-110vh) rotate(-20deg); opacity: 0; }
+}
+
+/* HeartExplosion.css */
